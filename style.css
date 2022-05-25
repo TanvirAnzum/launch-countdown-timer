@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: "Red Hat Text", sans-serif;
+}
+
+.main-area {
+  width: 100vw;
+  height: 100vh;
+  background: url("./images/pattern-hills.svg"), url("./images/bg-stars.svg");
+  background-repeat: no-repeat;
+  background-position: bottom, top;
+  background-size: contain, cover;
+  background-color: #231d2b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-area .main {
+  width: 60%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.main-area .main__header h1 {
+  color: hsl(0deg, 0%, 100%);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: clamp(0.88rem, 0.65rem + 1.13vw, 2rem);
+}
+.main-area .main__timer {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
+  gap: 3%;
+  align-items: center;
+}
+.main-area .main__timer-box {
+  width: 22%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.main-area .main__timer-box .timer {
+  width: 90%;
+  height: 80%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(236deg, 21%, 26%);
+  text-align: center;
+  font-size: clamp(2rem, 0.8rem + 6vw, 8rem);
+  border-radius: 0.1em;
+}
+.main-area .main__timer-box .timer p {
+  color: hsl(345deg, 95%, 68%);
+}
+.main-area .main__timer-box .caption {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1em;
+  color: hsl(237deg, 18%, 59%);
+  letter-spacing: 0.4em;
+}
+.main-area .main__media {
+  margin-top: 30vh;
+  display: flex;
+  gap: 2em;
+}/*# sourceMappingURL=style.css.map */
