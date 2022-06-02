@@ -46,42 +46,12 @@ $bg-color: #231d2b;
       }
     }
     &__timer {
-      margin-top: 5%;
-      width: 100%;
-      display: flex;
-      gap: 3%;
-      align-items: center;
-      &-box {
-        width: 22%;
-        height: 30vh;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        .timer {
-          width: 90%;
-          height: 80%;
-          margin-inline: auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: $dark_blue;
-          text-align: center;
-          font-size: clamp(2rem, calc(0.8rem + 6vw), 8rem);
-          border-radius: 0.1em;
-          //   clip-path: polygon(0 0, 100% 0, 96% 50%, 100% 100%, 0 100%, 4% 50%);
-
-          p {
-            color: $red;
-          }
-        }
-        .caption {
-          text-align: center;
-          text-transform: uppercase;
-          font-size: 1em;
-          color: $blue;
-          letter-spacing: 0.4em;
-        }
-      }
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 0.2em;
+      font-size: 8em;
+      line-height: 0;
     }
     &__media {
       margin-top: 30vh;
@@ -89,4 +59,135 @@ $bg-color: #231d2b;
       gap: 2em;
     }
   }
+}
+
+.flip-clock {
+  display: flex;
+  perspective: 2000px;
+  width: 10vw;
+  height: 30vh;
+  flex-direction: column;
+}
+
+.legend {
+  width: 100%;
+  height: calc(30vh - 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $blue;
+}
+
+.legend-title {
+  font-size: 0.15em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.digit {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.digit::before,
+.digit::after {
+  position: absolute;
+  /* z-index: 0; */
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.digit::before {
+  content: attr(data-digit-before);
+  bottom: 0;
+  align-items: flex-start;
+  border-bottom-left-radius: 0.1em;
+  border-bottom-right-radius: 0.1em;
+}
+
+.digit::after {
+  content: attr(data-digit-after);
+
+  top: 0;
+  align-items: flex-end;
+  border-top-left-radius: 0.1em;
+  border-top-right-radius: 0.1em;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 50%;
+
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+}
+
+.card-face {
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  backface-visibility: hidden;
+}
+
+.card-face-front {
+  align-items: flex-end;
+  border-top-left-radius: 0.1em;
+  border-top-right-radius: 0.1em;
+}
+
+.card-face-back {
+  align-items: flex-start;
+  transform: rotateX(-180deg);
+  border-bottom-left-radius: 0.1em;
+  border-bottom-right-radius: 0.1em;
+}
+
+.digit::before,
+.digit::after,
+.card-face-front,
+.card-face-back {
+  background-color: $dark_blue;
+  color: $red;
+  perspective: 2000px;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: $bg-color;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+}
+
+.left-dot {
+  left: -7.5px;
+  top: calc(50% - 15px / 2);
+}
+
+.right-dot {
+  right: -7.5px;
+  top: calc(50% - 15px / 2);
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  z-index: 8;
+  background-color: $bg-color;
 }
